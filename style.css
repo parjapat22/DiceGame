@@ -7,6 +7,7 @@
 }
 
 html {
+  /* 10px / 16px */
   font-size: 62.5%;
   overflow-x: hidden;
 }
@@ -19,28 +20,97 @@ body {
   width: 100%;
   height: 100vh;
   color: #333;
-  background-image: linear-gradient(to top left, #753682, #bf2e34);
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .container {
-  max-width: 100rem;
+  width: 100rem;
+  height: 60rem;
   padding: 3rem;
-  background-color: antiquewhite;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 9px;
+  display: flex;
+  position: relative;
+}
+
+.player {
+  display: flex;
+  flex: 50%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-name {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.player-score {
+  font-size: 8rem;
+  font-weight: 300;
+  color: #c7365f;
+  margin-bottom: auto;
+}
+
+.current-card {
+  background-color: #c7365f;
+  color: #fff;
+  width: 65%;
+  opacity: 0.8;
+  padding: 2rem;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.current-label {
+  font-size: 1.7rem;
+  color: #ddd;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.current-score {
+  font-size: 3.5rem;
 }
 
 .dice {
-  display: block;
+  position: absolute;
+  height: 10rem;
+  top: 16.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .btn {
-  display: block;
-  padding: 1rem 2rem;
-  font-size: 2rem;
-  font-weight: 500;
+  padding: 0.7rem 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
   text-decoration: none;
-  border-radius: 9px;
+  text-transform: uppercase;
+  border-radius: 50rem;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #444;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn--new {
+  top: 4rem;
+}
+
+.btn--roll {
+  top: 35rem;
+}
+
+.btn--hold {
+  top: 45rem;
 }
