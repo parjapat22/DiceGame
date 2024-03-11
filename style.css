@@ -13,94 +13,130 @@ html {
 }
 
 body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  color: #333;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   line-height: 1;
   overflow-x: hidden;
-  width: 100%;
-  height: 100vh;
-  color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .container {
   width: 100rem;
   height: 60rem;
-  padding: 3rem;
-  background-color: rgba(255, 255, 255, 0.35);
-  border-radius: 9px;
+  padding: 5rem;
   display: flex;
   position: relative;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 9px;
 }
 
-.player {
+.player-card {
+  padding: 10rem;
   display: flex;
   flex: 50%;
   flex-direction: column;
   align-items: center;
+  transition: all 1s ease;
 }
 
 .player-name {
+  margin-bottom: 1rem;
+  font-weight: 300;
   font-size: 4rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
   word-spacing: 2px;
-  font-weight: 300;
-  margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .player-score {
-  font-size: 8rem;
-  font-weight: 300;
-  color: #c7365f;
   margin-bottom: auto;
+  color: #c7365f;
+  font-weight: 300;
+  font-size: 8rem;
+}
+
+.player-active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.player-active .player-name {
+  font-weight: 600;
+}
+
+.player-active .player-score {
+  font-weight: 500;
+}
+
+.player-active .current-card {
+  opacity: 1;
 }
 
 .current-card {
+  width: 65%;
+  padding: 2rem;
   background-color: #c7365f;
   color: #fff;
-  width: 65%;
   opacity: 0.8;
-  padding: 2rem;
-  border-radius: 9px;
   text-align: center;
+  border-radius: 9px;
 }
 
 .current-label {
-  font-size: 1.7rem;
-  color: #ddd;
-  text-transform: uppercase;
   margin-bottom: 1rem;
+  color: #ddd;
+  font-size: 1.7rem;
+  text-transform: uppercase;
 }
 
 .current-score {
   font-size: 3.5rem;
 }
 
+.player-winner {
+  background-color: rgb(85, 200, 85);
+}
+
+.player-winner .player-name {
+  color: rgb(20, 150, 20);
+  font-weight: 700;
+  font-size: 5rem;
+}
+
 .dice {
-  position: absolute;
   height: 10rem;
+  position: absolute;
   top: 16.5rem;
   left: 50%;
   transform: translateX(-50%);
+  transition: all 0.2s ease-out;
+  box-shadow: 0rem 0rem 5rem rgba(0, 0, 0, 0.5);
+}
+
+.diceAnimation {
+  transform: translateX(-50%) rotate(360deg);
 }
 
 .btn {
   padding: 0.7rem 2.5rem;
-  font-size: 1.8rem;
-  font-weight: 400;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 50rem;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.6);
-  color: #444;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  transition: all 0.5s ease;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #444;
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50rem;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .btn--new {
@@ -113,4 +149,26 @@ body {
 
 .btn--hold {
   top: 45rem;
+}
+
+.btn::first-letter {
+  margin-right: 0.7rem;
+  display: inline-block;
+  font-size: 2.4rem;
+}
+
+.btn:hover {
+  transform: translate(-50%, 2px);
+}
+
+.btn:active {
+  background-color: #db9a9a;
+}
+
+.btn:focus {
+  outline: 2px solid #c7365f;
+}
+
+.hidden {
+  display: none;
 }
