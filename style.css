@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  width: 100rem;
+  width: 90rem;
   height: 60rem;
   padding: 2rem;
   display: flex;
@@ -134,15 +134,15 @@ body {
 }
 
 .btn--new {
-  top: 4rem;
+  top: 5rem;
 }
 
 .btn--roll {
-  top: 35rem;
+  bottom: 11.5rem;
 }
 
 .btn--hold {
-  top: 45rem;
+  bottom: 5rem;
 }
 
 .btn::first-letter {

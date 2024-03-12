@@ -27,13 +27,14 @@ function init() {
   activePlayer = 1;
   playing = true;
 
-  // starting conditions
+  // initialise scores
   score1El.textContent = 0;
   score2El.textContent = 0;
   current1El.textContent = 0;
   current2El.textContent = 0;
 
-  // setting initial css states
+  // initial css states
+  btnNew.classList.add("hidden");
   diceEl.classList.add("hidden");
   player1El.classList.add("player-active");
   player2El.classList.remove("player-active");
@@ -47,25 +48,25 @@ function init() {
   btnHold.classList.remove("hidden");
 }
 
-// rolling dice
+// roll the dice
 function rollDice() {
   if (playing) {
     // generating random number on dice roll
-    const dice = Math.trunc(Math.random() * 6) + 1;
+    const diceNum = Math.trunc(Math.random() * 6) + 1;
 
     // displaying rolled dice
     diceEl.classList.remove("hidden");
+    diceEl.src = `./img/dice-${diceNum}.png`;
     diceEl.classList.toggle("diceAnimation");
-    diceEl.src = `./img/dice-${dice}.png`;
 
-    // check for rolled duce number
-    if (dice != 1) {
-      currentScore += dice;
+    // check for rolled dice number
+    if (diceNum != 1) {
+      currentScore += diceNum;
 
       document.getElementById(`current-${activePlayer}`).textContent =
         currentScore;
     } else {
-      // switch player
+      // switch player if dice is 1
       switchPlayer();
     }
   }
@@ -80,7 +81,7 @@ function switchPlayer() {
   // switch player
   activePlayer = activePlayer === 1 ? 2 : 1;
 
-  // toggle background color for active player
+  // toggle background color of players
   player1El.classList.toggle("player-active");
   player2El.classList.toggle("player-active");
 }
@@ -96,10 +97,13 @@ function holdScore() {
       totalScore[activePlayer - 1];
 
     // check for winning player
-    if (totalScore[activePlayer - 1] >= 20) {
+    if (totalScore[activePlayer - 1] >= 50) {
       playing = false;
 
-      // disable buttons
+      // display new game button
+      btnNew.classList.remove("hidden");
+
+      // disable other buttons
       btnRoll.disabled = true;
       btnHold.disabled = true;
       btnRoll.classList.add("hidden");
@@ -107,6 +111,8 @@ function holdScore() {
 
       // hide dice
       diceEl.classList.add("hidden");
+
+      document.getElementById(`current-${activePlayer}`).textContent = 0;
 
       document
         .querySelector(`.player-${activePlayer}`)
